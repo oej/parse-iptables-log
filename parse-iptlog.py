@@ -8,6 +8,8 @@ import re
 import fileinput
 from collections import Counter
 
+linesToShow = 20
+
 pair_re = re.compile('([^ ]+)=([^ ]+)')
 portlist = []
 iplist = []
@@ -41,7 +43,6 @@ for line in fileinput.input():
 try:
     print("\n")
     count = 0
-    linesToShow = 10
     while (count < linesToShow):
         portcommon = [ite for ite, it in Counter(portlist).most_common()]
         print ("Port: "+str(portcommon[count])+" had "+str(portlist.count(portcommon[count]))+" hits")
