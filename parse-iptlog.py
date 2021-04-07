@@ -18,14 +18,16 @@ for line in fileinput.input():
     date = line.split()
     print("DEBUG: Data {}".format(data))
     if data.get('DPT', None) == None:
-        portlist.append(data['PROTO'])
         plabel="PROTO"
         pvalue=data['PROTO']
+        protolabel=data['PROTO']
+        portlist.append(protolabel)
     else:
         print("DEBUG: Data DPT {}".format(data['DPT']))
-        portlist.append(data['DPT'])
         plabel="Dport"
         pvalue=data['DPT']
+        protolabel=data['PROTO'] + "/" + data['DPT']
+        portlist.append(protolabel)
     if data.get('SPT', None) == None:
         splabel=""
         spvalue=""
